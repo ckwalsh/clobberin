@@ -30,5 +30,7 @@ module Clobberin
     Timezone::Configure.begin do |c|
       c.username = 'ckwalsh'
     end
+
+    GEOIP = GeoIP.new('GeoLiteCity.dat')
   end
 end

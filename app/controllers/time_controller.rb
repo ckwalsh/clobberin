@@ -48,10 +48,15 @@ class TimeController < ApplicationController
 
   def get_timezone(tz)
     if tz.nil?
-      geoip = GeoIP.new('GeoLiteCity.dat')
-      city = geoip.city(request.remote_ip)
-      puts city.inspect
-      return city.nil? ? Timezone::Zone.new(:zone => 'America/Los_Angeles') : Timezone::Zone.new(:latlon => [city.latitude, city.longitude])
+      city = Rails.cache.fetch('IP-'+request.remote_ip, :expires_in => 60) do
+        Clobberin::Application::GEOIP.city(request.remote_ip)
+      end
+
+      return Timezone::Zone.new(:zone => 'America/Los_Angeles') if city.nil?
+
+      Rails.cache.fetch('CITY-'+city.latitude+'@'+city.longitude) do
+        Timezone::Zone.new(:latlon => [city.latitude, city.longitude])
+      end
     else
       return Timezone::Zone.new :zone => tz
     end
