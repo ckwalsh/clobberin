@@ -53,4 +53,9 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  root 'time#index'
+  get 'about' => 'time#about'
+  get 'create' => 'time#create'
+  get ':ts' => 'time#view'
+  get ':ts/*tz' => 'time#view'
 end
