@@ -54,7 +54,7 @@ class TimeController < ApplicationController
 
       return Timezone::Zone.new(:zone => 'America/Los_Angeles') if city.nil?
 
-      Rails.cache.fetch('CITY-'+city.latitude+'@'+city.longitude) do
+      Rails.cache.fetch('CITY-'+city.latitude.to_s+'@'+city.longitude.to_s) do
         Timezone::Zone.new(:latlon => [city.latitude, city.longitude])
       end
     else
