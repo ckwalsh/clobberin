@@ -1,0 +1,48 @@
+// Place all the styles related to the time controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#home {
+  p {
+    font-size: 1.5em;
+  }
+  select {
+    width: auto;
+    display: inline-block;
+    font-size: 2em;
+    height: 2em;
+  }
+  div {
+    margin: 10px;
+  }
+  text-align: center;
+}
+
+#countdown_div {
+  font-size: 2em;
+  text-align: center;
+}
+
+#time {
+  display: block;
+  text-align: center;
+  font-size: 3.5em;
+  margin: 1em auto;
+}
+
+#timezone_select {
+  font-size: 2em;
+  height: 2em;
+  display: block;
+  width: auto;
+  margin: auto;
+}
+
+#geoip {
+  font-size: 2em;
+  height: 2em;
+  text-align: center;
+  display: block;
+  width: auto;
+  margin: auto;
+}

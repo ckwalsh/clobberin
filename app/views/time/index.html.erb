@@ -1,0 +1,22 @@
+<div id="home">
+<h1>Clobberin' makes it easy to share dates and times across timezones!</h1>
+<p>Just specify the date, time, and timezone, then send out the link. Recipients will automatically see the date in their local timezone, with no ambiguity!</p>
+<%= form_tag({:action => :create}, {:method => 'get'}) do %>
+<div>
+<%= select_tag(:h, options_for_select(0..23, 8), :class => 'form-control', :id => 'home_hour') %>
+<%= select_tag(:m, options_for_select((0..11).collect {|m| (m * 5).to_s.rjust(2, '0')}, 0), :class => 'form-control', :id => 'home_minute') %>
+<%= select_tag(:p, options_for_select(['AM', 'PM']), :class => 'form-control', :id => 'home_meridian') %>
+</div>
+<div>
+<%= select_tag(:o, options_for_select([['January',1], ['February',2], ['March',3], ["April",4], ["May",5], ["June",6], ["July",7], ["August",8], ["September",9], ["October",10], ["November",11], ["December",12]], @now.month), :class => 'form-control', :id => 'home_month') %>
+<%= select_tag(:d, options_for_select(1..31, @now.day), :class => 'form-control', :id => 'home_day') %>
+<%= select_tag(:y, options_for_select((@now.year)..(@now.year+3)), :class => 'form-control', :id => 'home_year') %>
+</div>
+<div>
+<%= select_tag(:tz, options_for_select(@zones, @timezone.zone), :class => 'form-control', :id => 'home_tz') %>
+</div>
+<div>
+<%= submit_tag "It's Clobberin' Time!", :class => 'btn btn-lg btn-primary' %>
+</div>
+<% end %>
+</div>

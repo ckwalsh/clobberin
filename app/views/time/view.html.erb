@@ -1,0 +1,13 @@
+<div id="time_page">
+<div id="countdown_div"><span id="countdown"></span> until...</div>
+<div id="time"><%= @time_tz %></div>
+<%= hidden_field_tag(:ts, @time.to_i) %>
+<%= select_tag(:tz, options_for_select(@zones, @timezone.zone), :class => 'form-control', :id => 'timezone_select') %>
+<% if @show_current_loc %>
+<div id="geoip">Or <%= link_to 'use my current location', :action => :view, :ts => @time.to_i, :tz => nil %></div>
+</div>
+<% end %>
+
+<%= javascript_tag do %>
+  doCountdown(<%= @time.to_i %>, <%= Time.now.to_i %>);
+<% end %>
