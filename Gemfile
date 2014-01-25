@@ -45,3 +45,4 @@ gem 'spring',        group: :development
 
 gem 'geoip'
 gem 'timezone'
+gem 'rails_12factor', group: :production
