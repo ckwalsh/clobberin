@@ -1,5 +1,5 @@
 <div id="time_page">
-<div id="countdown_div"><span id="countdown"></span> until...</div>
+<div id="countdown"></div>
 <div id="time"><%= @time_tz %></div>
 <%= hidden_field_tag(:ts, @time.to_i) %>
 <%= select_tag(:tz, options_for_select(@zones, @timezone.zone), :class => 'form-control', :id => 'timezone_select') %>

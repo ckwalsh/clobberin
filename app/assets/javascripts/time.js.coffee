@@ -61,6 +61,8 @@ $ ->
         text += remaining + ' second';
         if remaining > 1
           text += 's'
+
+       text += ' until...'
     else
       text = "Time's Up!";
 
