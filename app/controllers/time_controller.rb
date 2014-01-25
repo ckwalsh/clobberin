@@ -50,6 +50,7 @@ class TimeController < ApplicationController
     if tz.nil?
       geoip = GeoIP.new('GeoLiteCity.dat')
       city = geoip.city(request.remote_ip)
+      puts city.inspect
       return city.nil? ? Timezone::Zone.new(:zone => 'America/Los_Angeles') : Timezone::Zone.new(:latlon => [city.latitude, city.longitude])
     else
       return Timezone::Zone.new :zone => tz
